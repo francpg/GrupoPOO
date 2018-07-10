@@ -3,37 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fpuerta.vista;
+package anajarro.vista;
 
-import fpuerta.adm.LibroAdm;
-import fpuerta.modelo.Libro;
+import anajarro.seguridad.adm.AutoAdm;
+import anajarro.seguridad.vo.Auto;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author fapg3
+ * @author Docente
  */
-public class FrmReporte extends javax.swing.JFrame {
+public class ReporteAutos extends javax.swing.JFrame {
+    /*
+    String dni = "";
+    String nombres = "";
+    String apePaterno = "";
+    String apeMaterno = "";
+    */
+    
+    DefaultTableModel modeloUsuario = new DefaultTableModel(null, 
+    new String[]{"PLACA", "NOMBRE","MODELO","PAIS"});
+    
 
     /**
-     * Creates new form frmReporte
+     * Creates new form Reporte
      */
-    
-    DefaultTableModel modeloLibro = new DefaultTableModel(null, 
-    new String[]{"Título", "Cant. Pag,","Autor","Editorial"});
-    
-    public FrmReporte() {
+    public ReporteAutos() {
         initComponents();
-        LibroAdm libAdm = new LibroAdm();
-        ArrayList<Libro> listaLibros = libAdm.obtenerListaLibros();
+        //Obteniendo la lista de Usuarios.
+        AutoAdm usuAdm = new AutoAdm();
+        ArrayList<Auto> listaAutos = usuAdm.getListaAutos();
         
-        for (int i = 0; i < listaLibros.size(); i++) {
-            modeloLibro.addRow(new Object[]{listaLibros.get(i).getTitulo(),
-            listaLibros.get(i).getNroPaginas(),listaLibros.get(i).getAutor(),
-            listaLibros.get(i).getEditorial()
+        for (int i = 0; i < listaAutos.size(); i++) {
+            modeloUsuario.addRow(new Object[]{listaAutos.get(i).getplaca(),
+            listaAutos.get(i).getNombre(),listaAutos.get(i).getmodelo(),
+            listaAutos.get(i).getpais()
             });
         }
+        
+        
     }
 
     /**
@@ -51,31 +60,32 @@ public class FrmReporte extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Reporte de libros");
+        jLabel1.setText("Reporte de Autos");
 
-        jTable1.setModel(modeloLibro);
+        jTable1.setModel(modeloUsuario);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,13 +108,13 @@ public class FrmReporte extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmReporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReporteAutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmReporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReporteAutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmReporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReporteAutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmReporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReporteAutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -112,7 +122,7 @@ public class FrmReporte extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmReporte().setVisible(true);
+                new ReporteAutos().setVisible(true);
             }
         });
     }

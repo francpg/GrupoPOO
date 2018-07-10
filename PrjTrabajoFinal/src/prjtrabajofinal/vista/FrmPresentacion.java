@@ -5,8 +5,9 @@
  */
 package prjtrabajofinal.vista;
 
-import fpuerta.vista.FrmOperaciones;
-import rdiaz.vista.Formulario;
+import anajarro.vista.FormularioMultiResta;
+import fpuerta.vista.FormularioLetras;
+import rdiaz.vista.FormularioNumeros;
 
 /**
  *
@@ -49,6 +50,11 @@ public class FrmPresentacion extends javax.swing.JFrame {
         jPanel1.add(btnRdiaz);
 
         btnAnajarro.setText("Alejandro Najarro Martínez");
+        btnAnajarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnajarroActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAnajarro);
 
         btnMpolo.setText("Martin Polo Olivares");
@@ -95,7 +101,7 @@ public class FrmPresentacion extends javax.swing.JFrame {
 
     private void btnFpuertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFpuertaActionPerformed
         // TODO add your handling code here:
-        FrmOperaciones objFrm = new FrmOperaciones();
+        FormularioLetras objFrm = new FormularioLetras();
         objFrm.setLocationRelativeTo(null);
         objFrm.setDefaultCloseOperation(objFrm.DISPOSE_ON_CLOSE);
         objFrm.setVisible(true);
@@ -103,11 +109,19 @@ public class FrmPresentacion extends javax.swing.JFrame {
 
     private void btnRdiazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRdiazActionPerformed
         // TODO add your handling code here:
-        Formulario objFrm = new Formulario();
+        FormularioNumeros objFrm = new FormularioNumeros();
         objFrm.setLocationRelativeTo(null);
         objFrm.setDefaultCloseOperation(objFrm.DISPOSE_ON_CLOSE);
         objFrm.setVisible(true);
     }//GEN-LAST:event_btnRdiazActionPerformed
+
+    private void btnAnajarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnajarroActionPerformed
+        // TODO add your handling code here:
+        FormularioMultiResta objFrm = new FormularioMultiResta();
+        objFrm.setLocationRelativeTo(null);
+        objFrm.setDefaultCloseOperation(objFrm.DISPOSE_ON_CLOSE);
+        objFrm.setVisible(true);
+    }//GEN-LAST:event_btnAnajarroActionPerformed
 
     /**
      * @param args the command line arguments
